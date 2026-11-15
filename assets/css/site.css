@@ -1,0 +1,166 @@
+/* Reizon Games legal pages. No web fonts, scripts or third-party requests: a privacy page should not track anyone. */
+
+:root {
+  --accent: #3D4A63;
+  --accent-dark: #B7C2D8;
+
+  --page: #F4F5F7;
+  --card: #FFFFFF;
+  --tile: #F4F5F7;
+  --text: #1F2533;
+  --text-soft: #4B5363;
+  --muted: #6A7283;
+  --line: #E4E7EC;
+
+  --radius: 14px;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0F1218;
+    --card: #171B23;
+    --tile: #1F2430;
+    --text: #E8EAEF;
+    --text-soft: #B9BFCB;
+    --muted: #8D95A4;
+    --line: #2A303C;
+  }
+}
+
+/* The working accent is resolved on every element that sets its own --accent (body on a policy page, each hub card),
+   because a custom property's var() is resolved where it is declared, not where it is used. */
+body, .app-card {
+  --a: var(--accent);
+  --a-soft: color-mix(in srgb, var(--a) 11%, var(--card));
+}
+@media (prefers-color-scheme: dark) {
+  body, .app-card { --a: var(--accent-dark); }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 16px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--text);
+  font: 16px/1.65 var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--a); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--a); outline-offset: 2px; border-radius: 4px; }
+
+.skip { position: absolute; left: -9999px; top: 8px; background: var(--card); padding: 8px 12px; border-radius: 8px; z-index: 10; }
+.skip:focus { left: 8px; }
+
+.accent-bar { height: 4px; background: var(--a); }
+
+.shell { max-width: 960px; margin: 0 auto; padding: 20px 16px 40px; }
+
+/* Header and footer */
+.site-head { padding: 4px 4px 16px; }
+.brand { display: inline-flex; align-items: center; gap: 8px; color: var(--text-soft); text-decoration: none; font-size: 14px; font-weight: 500; }
+.brand:hover { color: var(--text); }
+
+.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 32px clamp(18px, 4vw, 40px); }
+
+.site-foot { padding: 20px 4px 0; font-size: 13.5px; color: var(--muted); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
+.site-foot p { margin: 0; }
+.site-foot a { color: var(--text-soft); }
+.foot-links { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+
+/* Hub */
+.hub-title { margin: 0 0 6px; font-size: clamp(26px, 4vw, 32px); line-height: 1.2; letter-spacing: -0.01em; }
+.hub-lead { margin: 0 0 28px; color: var(--text-soft); max-width: 56ch; }
+
+.apps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 14px; }
+.app-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; display: flex; flex-direction: column; gap: 14px; }
+.app-card-head { display: flex; align-items: center; gap: 14px; }
+.app-card h2 { margin: 0; font-size: 18px; line-height: 1.3; }
+.app-card .sub { margin: 2px 0 0; font-size: 13.5px; color: var(--muted); line-height: 1.4; }
+.app-card .tagline { margin: 0; font-size: 14.5px; color: var(--text-soft); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
+.chips a {
+  font-size: 14px; font-weight: 500; text-decoration: none;
+  padding: 6px 14px; border-radius: 999px;
+  color: var(--a); background: var(--a-soft);
+  border: 1px solid color-mix(in srgb, var(--a) 22%, transparent);
+}
+.chips a:hover { background: color-mix(in srgb, var(--a) 18%, var(--card)); }
+
+.app-icon { display: block; flex: none; width: 56px; height: 56px; border-radius: 13px; object-fit: cover; }
+.app-card .app-icon { width: 48px; height: 48px; border-radius: 11px; }
+
+/* Policy page head */
+.crumbs { font-size: 13.5px; color: var(--muted); display: flex; gap: 8px; }
+.crumbs a { color: var(--muted); }
+
+.doc-title { display: flex; align-items: center; gap: 16px; margin: 16px 0 0; }
+.doc-title h1 { margin: 0; font-size: clamp(24px, 3.6vw, 30px); line-height: 1.2; letter-spacing: -0.01em; }
+.meta { margin: 4px 0 0; font-size: 14px; color: var(--muted); }
+
+.doc-tabs { display: flex; gap: 4px; margin: 22px 0 0; border-bottom: 1px solid var(--line); }
+.doc-tabs a { padding: 8px 12px; margin-bottom: -1px; font-size: 14.5px; text-decoration: none; color: var(--text-soft); border-bottom: 2px solid transparent; }
+.doc-tabs a:hover { color: var(--text); }
+.doc-tabs a[aria-current="page"] { color: var(--a); border-bottom-color: var(--a); font-weight: 500; }
+
+.glance { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 136px), 1fr)); gap: 10px; margin: 22px 0 0; }
+.glance div { background: var(--tile); border-radius: 10px; padding: 12px 14px; }
+.glance dt { font-size: 13px; color: var(--muted); }
+.glance dd { margin: 2px 0 0; font-weight: 600; line-height: 1.35; }
+
+/* Policy body: contents list beside the text on wide screens, folded above it on phones */
+.doc-body { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; margin-top: 28px; }
+
+.toc { display: none; }
+.toc-label { margin: 0 0 8px; font-size: 13px; color: var(--muted); }
+.toc ol, .toc-mobile ol { list-style: none; margin: 0; padding: 0; }
+.toc a, .toc-mobile a { display: block; padding: 5px 0 5px 12px; font-size: 14px; line-height: 1.4; color: var(--text-soft); text-decoration: none; border-left: 2px solid var(--line); }
+.toc a:hover, .toc-mobile a:hover { color: var(--a); border-left-color: var(--a); }
+
+.toc-mobile { border: 1px solid var(--line); border-radius: 10px; padding: 0 14px; }
+.toc-mobile summary { cursor: pointer; padding: 10px 0; font-size: 15px; font-weight: 500; list-style-position: inside; }
+.toc-mobile[open] summary { border-bottom: 1px solid var(--line); margin-bottom: 8px; }
+.toc-mobile ol { padding-bottom: 10px; }
+
+@media (min-width: 820px) {
+  .doc-body { grid-template-columns: 190px minmax(0, 1fr); gap: 40px; }
+  .toc { display: block; position: sticky; top: 20px; align-self: start; }
+  .toc-mobile { display: none; }
+}
+
+/* Policy text */
+.prose { max-width: 68ch; color: var(--text-soft); }
+.prose > :first-child { margin-top: 0; }
+.prose h2 { color: var(--text); font-size: 20px; line-height: 1.3; margin: 36px 0 10px; scroll-margin-top: 16px; }
+.prose h3 { color: var(--text); font-size: 16.5px; margin: 24px 0 6px; }
+.prose p, .prose ul, .prose ol { margin: 0 0 14px; }
+.prose ul, .prose ol { padding-left: 22px; }
+.prose li { margin: 4px 0; }
+.prose strong { color: var(--text); font-weight: 600; }
+.prose code { font-size: 0.92em; background: var(--tile); padding: 1px 5px; border-radius: 5px; }
+.prose table { width: 100%; border-collapse: collapse; margin: 0 0 16px; font-size: 14.5px; display: block; overflow-x: auto; }
+.prose th, .prose td { text-align: left; vertical-align: top; padding: 9px 12px 9px 0; border-bottom: 1px solid var(--line); }
+.prose th { color: var(--text); font-weight: 600; }
+.prose blockquote { margin: 0 0 16px; padding: 12px 16px; background: var(--a-soft); border-radius: 10px; color: var(--text); }
+.prose blockquote p:last-child { margin-bottom: 0; }
+
+/* 404 */
+.notfound { text-align: center; padding: 24px 0; }
+.notfound h1 { margin: 0 0 8px; }
+.notfound p { color: var(--text-soft); }
+
+@media print {
+  body { background: #fff; color: #000; }
+  .site-head, .accent-bar, .toc, .toc-mobile, .doc-tabs, .skip { display: none !important; }
+  .card { border: 0; padding: 0; }
+  .doc-body { display: block; }
+  .prose { max-width: none; color: #000; }
+  a { color: #000; }
+}

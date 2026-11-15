@@ -1,0 +1,33 @@
+# One entry per app. The hub lists them in this order; a policy page finds its app by `id` (its front matter `app:`).
+# accent: links, the top bar and highlights in light mode. accent_dark: the same in dark mode (lighter, for contrast).
+# icon_bg: shown behind the icon while it loads, and around transparent icons.
+
+- id: ludo
+  name: Ludo
+  publisher: Reizon Games
+  tagline: Classic Ludo for 2 to 4 players, offline
+  platforms: Android and iOS
+  icon: /assets/icons/ludo.png
+  icon_bg: "#1A1446"
+  accent: "#5B4FD0"
+  accent_dark: "#ADA6F5"
+  docs:
+    - title: Privacy policy
+      url: /ludo/privacy/
+    - title: Terms of use
+      url: /ludo/terms/
+
+- id: vault
+  name: Vault
+  publisher: Reizon Games
+  tagline: Encrypted password manager and document wallet
+  platforms: Android
+  icon: /assets/icons/vault.svg
+  icon_bg: "#C6F24E"
+  accent: "#4E7A45"
+  accent_dark: "#A9C99B"
+  docs:
+    - title: Privacy policy
+      url: /vault/privacy/
+    - title: Terms of use
+      url: /vault/terms/

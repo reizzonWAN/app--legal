@@ -1,0 +1,27 @@
+---
+layout: base
+title: Privacy and terms
+description: Privacy policies and terms of use for every app by Reizon Games.
+---
+<h1 class="hub-title">Privacy and terms</h1>
+<p class="hub-lead">Privacy policies and terms of use for each app by {{ site.publisher }}. Pick an app to read its documents.</p>
+
+<ul class="apps">
+  {%- for app in site.data.apps %}
+  <li class="app-card" style="--accent: {{ app.accent }}; --accent-dark: {{ app.accent_dark }}">
+    <div class="app-card-head">
+      <img class="app-icon" src="{{ app.icon | relative_url }}" alt="" width="48" height="48" style="background: {{ app.icon_bg }}">
+      <div>
+        <h2>{{ app.name }}</h2>
+        <p class="sub">{{ app.publisher }} · {{ app.platforms }}</p>
+      </div>
+    </div>
+    <p class="tagline">{{ app.tagline }}</p>
+    <nav class="chips" aria-label="{{ app.name }} documents">
+      {%- for d in app.docs %}
+      <a href="{{ d.url | relative_url }}">{{ d.title }}</a>
+      {%- endfor %}
+    </nav>
+  </li>
+  {%- endfor %}
+</ul>

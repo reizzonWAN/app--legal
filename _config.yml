@@ -1,0 +1,28 @@
+# Built by GitHub Pages' own Jekyll from the main branch. No Gemfile and no Actions workflow on purpose.
+title: Reizon Games legal
+description: Privacy policies and terms of use for apps by Reizon Games.
+publisher: Reizon Games
+
+# Public support address shown on every page. While it is empty, pages point to GitHub issues instead.
+# Google Play and the App Store expect a way to contact the developer, so fill this in before publishing an app.
+contact_email: ""
+
+github_repo: reizzonWAN/app--legal
+
+url: https://reizzonwan.github.io
+baseurl: /app--legal
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
+  hard_wrap: false
+
+# Repo docs, not site pages (GitHub Pages would otherwise turn README.md into a page).
+exclude:
+  - README.md
+  - CONTRIBUTING.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
+  - vendor

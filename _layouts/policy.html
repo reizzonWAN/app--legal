@@ -1,0 +1,67 @@
+---
+layout: base
+---
+{%- assign app = site.data.apps | where: "id", page.app | first -%}
+{%- comment -%}
+  Contents list built from the rendered h2s (kramdown gives each one an id), so policies need no TOC markup.
+{%- endcomment -%}
+{%- assign sections = content | split: '<h2 id="' -%}
+{%- capture toc_items -%}
+  {%- for part in sections offset: 1 -%}
+    {%- assign id = part | split: '"' | first -%}
+    {%- assign heading = part | split: '</h2>' | first | remove_first: id | remove_first: '">' | strip_html | strip -%}
+    <li><a href="#{{ id }}">{{ heading }}</a></li>
+  {%- endfor -%}
+{%- endcapture -%}
+
+<article class="doc">
+  <header class="doc-head">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="{{ '/' | relative_url }}">Legal</a><span aria-hidden="true">/</span><span>{{ app.name }}</span>
+    </nav>
+
+    <div class="doc-title">
+      <img class="app-icon" src="{{ app.icon | relative_url }}" alt="" width="56" height="56" style="background: {{ app.icon_bg }}">
+      <div>
+        <h1>{{ page.title }}</h1>
+        <p class="meta">
+          {{ app.publisher }} · Last updated
+          <time datetime="{{ page.updated | date: '%Y-%m-%d' }}">{{ page.updated | date: '%-d %B %Y' }}</time>
+        </p>
+      </div>
+    </div>
+
+    {%- if app.docs.size > 1 %}
+    <nav class="doc-tabs" aria-label="{{ app.name }} documents">
+      {%- for d in app.docs %}
+      <a href="{{ d.url | relative_url }}"{% if d.url == page.url %} aria-current="page"{% endif %}>{{ d.title }}</a>
+      {%- endfor %}
+    </nav>
+    {%- endif %}
+
+    {%- if page.glance %}
+    <dl class="glance">
+      {%- for g in page.glance %}
+      <div><dt>{{ g.label }}</dt><dd>{{ g.value }}</dd></div>
+      {%- endfor %}
+    </dl>
+    {%- endif %}
+  </header>
+
+  <div class="doc-body">
+    {%- if toc_items != "" %}
+    <nav class="toc" aria-label="On this page">
+      <p class="toc-label">On this page</p>
+      <ol>{{ toc_items }}</ol>
+    </nav>
+    <details class="toc-mobile">
+      <summary>On this page</summary>
+      <ol>{{ toc_items }}</ol>
+    </details>
+    {%- endif %}
+
+    <div class="prose">
+      {{ content }}
+    </div>
+  </div>
+</article>
