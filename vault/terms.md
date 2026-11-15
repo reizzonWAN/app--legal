@@ -71,4 +71,4 @@ app after a change means you accept the new terms.
 
 ## Contact
 
-Questions about these terms: see the contact link at the bottom of this page.
+Questions about these terms: email [{{ site.contact_email }}](mailto:{{ site.contact_email }}).

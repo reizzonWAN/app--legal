@@ -71,4 +71,4 @@ change history link at the bottom of this page shows every past version.
 
 ## Contact
 
-Questions about this policy: see the contact link at the bottom of this page.
+Questions about this policy: email [{{ site.contact_email }}](mailto:{{ site.contact_email }}).
