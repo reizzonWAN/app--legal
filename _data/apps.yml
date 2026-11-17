@@ -23,7 +23,7 @@
   tagline: Encrypted password manager and document wallet
   platforms: Android
   icon: /assets/icons/vault.svg
-  icon_bg: "#C6F24E"
+  icon_bg: "#25401D"
   accent: "#4E7A45"
   accent_dark: "#A9C99B"
   docs:
