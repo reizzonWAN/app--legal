@@ -69,7 +69,7 @@ docker run --rm \
 		set -e
 		export PATH=/gems/bin:\$PATH
 		gem list -i jekyll -v $version >/dev/null || gem install --no-document jekyll:$version kramdown-parser-gfm
-		cd /src && jekyll build --quiet --source /src --destination /out --config _config.yml,_config.vps.yml
+		cd /src && jekyll build --quiet --disable-disk-cache --source /src --destination /out --config _config.yml,_config.vps.yml
 		chown -R $(id -u):$(id -g) /out
 	"
 [ -f "$build_dir/out/index.html" ] || { echo "build produced no index.html; the live site was not touched" >&2; exit 1; }
