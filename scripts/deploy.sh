@@ -68,7 +68,7 @@ docker run --rm \
 	"$image" sh -c "
 		set -e
 		export PATH=/gems/bin:\$PATH
-		gem list -i jekyll -v $version >/dev/null || gem install --no-document jekyll -v $version kramdown-parser-gfm
+		gem list -i jekyll -v $version >/dev/null || gem install --no-document jekyll:$version kramdown-parser-gfm
 		cd /src && jekyll build --quiet --source /src --destination /out --config _config.yml,_config.vps.yml
 		chown -R $(id -u):$(id -g) /out
 	"
