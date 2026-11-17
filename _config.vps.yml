@@ -1,0 +1,5 @@
+# Overrides for the copy served from the VPS at legal.onlinebuildstudio.com (scripts/deploy.sh builds with
+# --config _config.yml,_config.vps.yml). GitHub Pages ignores this file and keeps serving
+# reizzonwan.github.io/app--legal/, so store links that point there keep working.
+url: https://legal.onlinebuildstudio.com
+baseurl: ""

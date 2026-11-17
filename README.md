@@ -18,6 +18,25 @@ listing and app build pointing at it breaks.
 GitHub Pages builds the site from `main` with its own Jekyll. There is no Gemfile, no Actions workflow and no build
 step to maintain: push to `main` and the site updates within a minute or two.
 
+## Hosting on the VPS (legal.onlinebuildstudio.com)
+
+The same site is also served from the VPS by the shared edge Caddy (edge repo `caddy`, `sites/legal.caddy`) at
+<https://legal.onlinebuildstudio.com/>, with no `/app--legal` prefix. The GitHub Pages copy stays, so the store links
+above keep working.
+
+**The VPS ships only `origin/release/prod`.** Work lands on `main` (GitHub Pages publishes it); to release to the
+VPS, fast-forward `release/prod` to `main`, push both (as `reizzonWAN`), then in a visible terminal:
+
+```bash
+scripts/deploy.sh deploy@2.29.152.218
+```
+
+It exports `origin/release/prod` with `git archive`, builds it on the server with Jekyll in a throwaway Ruby
+container (`_config.yml` plus `_config.vps.yml`), and replaces `/opt/sites/app--legal` only after a good build.
+Emergency hotfix only: `DEPLOY_REF=<commit> scripts/deploy.sh …`, then merge it into `release/prod`.
+
+First-time setup on the server: `sudo install -d -m 755 -o deploy -g deploy /opt/sites/app--legal /opt/sites/.build`.
+
 ```
 _config.yml           site settings, including the public contact email
 _data/apps.yml        one entry per app: name, publisher, icon, accent colours, its documents
