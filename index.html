@@ -10,7 +10,7 @@ description: Privacy policies and terms of use for every app by Reizon Games.
   {%- for app in site.data.apps %}
   <li class="app-card" style="--accent: {{ app.accent }}; --accent-dark: {{ app.accent_dark }}">
     <div class="app-card-head">
-      <img class="app-icon" src="{{ app.icon | relative_url }}" alt="" width="48" height="48" style="background: {{ app.icon_bg }}">
+      <img class="app-icon" src="{{ app.icon | relative_url }}?v={{ site.time | date: '%s' }}" alt="" width="48" height="48" style="background: {{ app.icon_bg }}">
       <div>
         <h2>{{ app.name }}</h2>
         <p class="sub">{{ app.publisher }} · {{ app.platforms }}</p>
