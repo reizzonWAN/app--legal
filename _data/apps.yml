@@ -27,6 +27,8 @@
   accent: "#4E7A45"
   accent_dark: "#A9C99B"
   docs:
+    - title: Overview
+      url: /vault/
     - title: Privacy policy
       url: /vault/privacy/
     - title: Terms of use
